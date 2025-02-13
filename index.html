@@ -1,79 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Contact form</title>
 
-    <title>Frontend Mentor | Contact form</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="toast hidden">
-      <div>
-        <img src="./assets/images/icon-success-check.svg" alt="toast check" />
-        <span>Message Sent!</span>
-      </div>
-      <p>Thanks for completing the form. We'll be in touch soon!</p>
-    </div>
-    <div class="form-container">
-      <h1>Contact Us</h1>
-      <form class="form">
-        <div class="name-inputs">
-          <div class="form-group">
-            <label for="">First Name <span class="star">*</span></label>
-            <input type="text" id="first-name" aria-required="true" />
-            <span class="error hidden">This field is required</span>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing:border-box;
+    }
+
+    /* UTILITY CLASSES */
+    .small{
+      font-size: 0.7rem;
+      line-height: 2;
+      font-weight: 400;
+      font-family: sans-serif;
+    }
+
+    .large{
+      font-size: 2rem;
+      font-weight: 600;
+      font-family: sans-serif;
+    }
+
+    body{
+      background-color: hsl(148, 38%, 91%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* flex-direction: column; */
+       min-height: 100vh;
+      /* gap: 3rem; */
+    }
+
+    main{
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      background-color: white;
+      padding: 2rem;
+      width: 650px;
+      border-radius: 20px;
+    }
+
+    /* .container{
+      width: 650px;
+    } */
+
+    .rowone{
+      display: flex;
+      /* gap: ; */
+      width: 100%;
+      gap: 20px;
+    }
+
+    .rowone input{
+      width: 100%;
+      padding: 0.5rem 5rem 0.5rem 0.5rem;
+      border-radius: 5px;
+    }
+
+    .message textarea{
+      width: 100%;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .mail input{
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .rowthree{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .rowthree .radio1{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid black;
+      padding: 0.5rem 10rem 0.5rem 0.5rem;
+      border-radius: 5px;
+    }
+
+    .checkbox{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .buttons{
+       display: flex;
+       justify-content: center;
+       gap: 20px;
+       padding-top: 20px;
+    }
+
+    .buttons button{
+      width: 100%;
+      font-weight: bold;
+      color: hsl(0, 0%, 100%);
+      background-color: hsl(169, 82%, 27%);
+      padding: 10px 0;
+      border-radius: 5px;
+      border: 1px solid hsl(187, 24%, 22%);
+      /* margin-top: 8px; */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main>
+      <h1 class="head large">Contact Us</h1>
+      <form id="userForm">
+        <div class="rowone">
+          <div class="one">
+            <label for="firstname" class="small">First Name *</label><br>
+            <input type="text" id="firstName" placeholder="Enter Your Name"><br>
           </div>
-          <div class="form-group">
-            <label for="">Last Name <span class="star">*</span></label>
-            <input type="text" id="last-name" aria-required="true" />
-            <span class="error hidden">This field is required</span>
+          <div class="two">
+            <label for="lastname" class="small">Last Name *</label><br>
+            <input type="text" id="lastName" placeholder="Enter Your Name">
           </div>
         </div>
-        <div class="form-group">
-          <label for="">Email Address <span class="star">*</span></label>
-          <input type="email" id="email" aria-required="true" />
-          <span class="error valid hidden">Please enter a valid email address</span>
-          <span class="error empty hidden">This field is required</span>
+        <br>
+
+        <div class="mail">
+          <label for="firstname" class="small">Email Adress *</label>
+          <br>
+          <input type="email" id="email" placeholder="Enter Your Email">
         </div>
-        <div class="form-group radio">
-          <label for="query">Query Type <span class="star">*</span></label>
-          <div id="query">
-            <div class="query-type">
-              <input type="radio" id="option1" name="query-type" aria-required="true" />
-              <label for="option1">General Enquiry</label>
-            </div>
-            <div class="query-type">
-              <input type="radio" id="option2" name="query-type" aria-required="true" />
-              <label for="option2">Support Request</label>
-            </div>
+
+        <label for="rowthree" class="small" > Query Type *</label>
+        <div class="rowthree">
+          <div class="radio1">
+            <input type="radio" id="query1" name="query">
+            <label for="query1" class="small"> General Enquiry</label>
           </div>
-          <span class="error hidden">Please select a query type</span>
-        </div>
-        <div class="form-group">
-          <label for="message">Message <span class="star">*</span></label>
-          <textarea id="message" rows="4" aria-required="true"></textarea>
-          <span class="error hidden">This field is required</span>
-        </div>
-        <div class="form-group checkbox">
-          <div>
-            <input type="checkbox" id="consent" aria-required="true" />
-            <label for="consent"
-              >I consent to being contacted by the team <span class="star">*</span></label
-            >
+           
+          <div class="radio1">
+            <input type="radio" id="query2" name="query">
+            <label for="query2" class="small"> Support Request</label>
           </div>
-          <span class="error hidden">To submit this form, please consent to being contacted</span>
         </div>
-        <button type="submit">Submit</button>
+        <br>
+
+        <div class="message">
+          <label for="message" class="small"> Message *</label><br>
+          <textarea name="message" id="message" rows="10" cols="30" placeholder="Enter Your Message"></textarea><br>
+        </div>
+        
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox">
+          <label for="checkbox" class="small">I consent to being contacted by the team</label>
+          <br>
+        </div>
+        
+        <div class="buttons">
+          <!-- <button type="reset" class="small">Reset</button> -->
+          <button type="submit" class="small">Submit</button>
+        </div>
+        
       </form>
+
+      <div id="result"></div>
     </div>
+  </main>
+  
 
-    <!-- Message Sent!
-  Thanks for completing the form. We'll be in touch soon! -->
+  <!-- First Name
+  This field is required
 
-    <script src="./index.js"></script>
-  </body>
+  Last Name
+  This field is required
+
+  Email Address
+  Please enter a valid email address
+  This field is required
+
+  Query Type
+  General Enquiry
+  Support Request
+  Please select a query type
+
+  Message
+  This field is required
+
+  I consent to being contacted by the team
+  To submit this form, please consent to being contacted
+
+  Submit
+
+  Message Sent!
+  Thanks for completing the form. We'll be in touch soon!
+   -->
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script src="./index.js"></script>
+</body>
 </html>
